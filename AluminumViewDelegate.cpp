@@ -7,7 +7,8 @@
  * Constructor
  */
 AluminumViewDelegate::AluminumViewDelegate(MTL::Device *pDevice)
-    : MTK::ViewDelegate()
+    : MTK::ViewDelegate(),
+    _pRenderer(std::make_unique<Renderer>(pDevice))
 {
 
 }

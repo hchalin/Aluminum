@@ -10,7 +10,7 @@
 AluminumAppDelegate::~AluminumAppDelegate() {
     _pView->release();
     _pWindow->release();
-    _pDevice->release();
+    _device->release();
     delete _pViewDelegate;
 }
 
@@ -29,15 +29,15 @@ void AluminumAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotif
         NS::BackingStoreBuffered,
         false);
     //* Create Device
-    _pDevice = MTL::CreateSystemDefaultDevice();
+    _device = NS::TransferPtr(MTL::CreateSystemDefaultDevice());
 
     //* Create base Metal View, set clear color, and pixel format
-    _pView = MTK::View::alloc()->init(frame, _pDevice);
+    _pView = MTK::View::alloc()->init(frame, _device.get());
     _pView->setClearColor(MTL::ClearColor::Make(0.0, 1.0, 0.0, 1.0));
     _pView->setColorPixelFormat(MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB);
 
     //* create and assign view delegate to view
-    _pViewDelegate = new AluminumViewDelegate(_pDevice);
+    _pViewDelegate = new AluminumViewDelegate(_device.get());
     _pView->setDelegate( _pViewDelegate );
 
     _pWindow->setContentView( _pView );

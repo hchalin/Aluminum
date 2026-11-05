@@ -16,6 +16,8 @@ add_executable(Aluminum
     AluminumViewDelegate.cpp
     AluminumViewDelegate.h
     MetalCppImplementation.cpp
+        Renderer.cpp
+        Renderer.h
 )
 
 target_include_directories(Aluminum PRIVATE
@@ -31,4 +33,5 @@ target_link_libraries(Aluminum PRIVATE
     "-framework QuartzCore"
     "-framework AppKit"
     "-framework MetalKit"
+        ${CHRONO_TARGETS}
 )

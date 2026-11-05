@@ -3,8 +3,15 @@
 //
 
 #pragma once
-#include "MetalKit/MTKView.hpp"
+#include <memory>
+#include <MetalKit/MetalKit.hpp>
 
+// File includes
+#include "MetalKit/MTKView.hpp"
+#include "Renderer.h"
+
+
+class Renderer;
 
 class AluminumViewDelegate : public MTK::ViewDelegate {
 public:
@@ -13,5 +20,6 @@ public:
     virtual void drawableSizeWillChange(class MTK::View *pView, CGSize size) override;
     virtual void drawInMTKView(class MTK::View *pView) override;
 private:
-    class Renderer* _pRenderer;
+    // class Renderer* _pRenderer;
+    std::unique_ptr<Renderer> _pRenderer;
 };

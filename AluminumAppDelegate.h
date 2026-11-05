@@ -20,5 +20,5 @@ private:
     NS::Window* _pWindow = nullptr;
     MTK::View* _pView = nullptr;
     AluminumViewDelegate* _pViewDelegate = nullptr;
-    MTL::Device* _pDevice = nullptr;
+    NS::SharedPtr<MTL::Device> _device;
 };
