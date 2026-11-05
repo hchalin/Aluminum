@@ -2,16 +2,23 @@
 // Created by Hayden Chalin on 11/3/26.
 //
 
-#include <Metal/Metal.hpp>
-#include <AppKit/AppKit.hpp>
-#include <MetalKit/MetalKit.hpp>
-
 #pragma once
 
+#include <AppKit/AppKit.hpp>
+#include <Metal/Metal.hpp>
+#include <MetalKit/MetalKit.hpp>
 
-class AluminumAppDelegate : NS::ApplicationDelegate {
+#include "AluminumViewDelegate.h"
+
+class AluminumAppDelegate : public NS::ApplicationDelegate {
+public:
     virtual ~AluminumAppDelegate();
     void applicationDidFinishLaunching(NS::Notification *pNotification) override;
     void applicationWillFinishLaunching(NS::Notification *pNotification) override;
-    bool applicationShouldTerminateAfterLastWindowClosed(class NS::Application *pSender) override;
+    bool applicationShouldTerminateAfterLastWindowClosed(NS::Application *pSender) override;
+private:
+    NS::Window* _pWindow = nullptr;
+    MTK::View* _pView = nullptr;
+    AluminumViewDelegate* _pViewDelegate = nullptr;
+    MTL::Device* _pDevice = nullptr;
 };

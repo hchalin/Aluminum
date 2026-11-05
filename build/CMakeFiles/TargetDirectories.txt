@@ -1,0 +1,3 @@
+/Users/haydenchalin/CLionProjects/AluminumCpp/build/CMakeFiles/Aluminum.dir
+/Users/haydenchalin/CLionProjects/AluminumCpp/build/CMakeFiles/edit_cache.dir
+/Users/haydenchalin/CLionProjects/AluminumCpp/build/CMakeFiles/rebuild_cache.dir

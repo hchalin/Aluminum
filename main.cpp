@@ -1,11 +1,11 @@
-#define NS_PRIVATE_IMPLEMENTATION
-#define MTL_PRIVATE_IMPLEMENTATION
-#define MTK_PRIVATE_IMPLEMENTATION
-#define CA_PRIVATE_IMPLEMENTATION
-#include "AppKit/NSApplication.hpp"
+#include "AluminumAppDelegate.h"
 
 int main() {
-
-    NS::ApplicationDelegate app;
+    NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
+    AluminumAppDelegate appDelegate;
+    NS::Application* app = NS::Application::sharedApplication();
+    app->setDelegate(&appDelegate);
+    app->run();
+    pool->release();
     return 0;
 }
