@@ -22,6 +22,7 @@ void AluminumViewDelegate::drawableSizeWillChange(MTK::View *pView, CGSize size)
 }
 
 void AluminumViewDelegate::drawInMTKView(MTK::View *pView) {
+    _pRenderer->draw(pView);
 
 }
 
