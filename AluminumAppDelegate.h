@@ -7,6 +7,7 @@
 #include <AppKit/AppKit.hpp>
 #include <Metal/Metal.hpp>
 #include <MetalKit/MetalKit.hpp>
+#include <memory>
 
 #include "AluminumViewDelegate.h"
 
@@ -17,8 +18,9 @@ public:
     void applicationWillFinishLaunching(NS::Notification *pNotification) override;
     bool applicationShouldTerminateAfterLastWindowClosed(NS::Application *pSender) override;
 private:
-    NS::Window* _pWindow = nullptr;
-    MTK::View* _pView = nullptr;
+    NS::SharedPtr<NS::Window> _window;
+    NS::SharedPtr<MTK::View> _view;
+    std::unique_ptr<AluminumViewDelegate> _viewDelegate;
     AluminumViewDelegate* _pViewDelegate = nullptr;
     NS::SharedPtr<MTL::Device> _device;
 };

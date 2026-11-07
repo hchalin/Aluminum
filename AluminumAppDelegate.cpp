@@ -8,9 +8,6 @@
 
 
 AluminumAppDelegate::~AluminumAppDelegate() {
-    _pView->release();
-    _pWindow->release();
-    _device->release();
     delete _pViewDelegate;
 }
 
@@ -23,27 +20,30 @@ void AluminumAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotif
     CGRect frame = {.origin = {100.0, 100.0}, .size = {1024, 1024}};
 
      //*  Create window
-    _pWindow = NS::Window::alloc()->init(
+    NS::Window* _pWindow = NS::Window::alloc()->init(
         frame,
         NS::WindowStyleMaskClosable|NS::WindowStyleMaskTitled,
         NS::BackingStoreBuffered,
         false);
+    _window = NS::TransferPtr(_pWindow);
+
     //* Create Device
     _device = NS::TransferPtr(MTL::CreateSystemDefaultDevice());
 
     //* Create base Metal View, set clear color, and pixel format
-    _pView = MTK::View::alloc()->init(frame, _device.get());
-    _pView->setClearColor(MTL::ClearColor::Make(0.0, 1.0, 0.0, 1.0));
-    _pView->setColorPixelFormat(MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB);
+    _view = NS::TransferPtr(MTK::View::alloc()->init(frame, _device.get()));
+    _view->setClearColor(MTL::ClearColor::Make(0.0, 1.0, 0.0, 1.0));
+    _view->setColorPixelFormat(MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB);
 
     //* create and assign view delegate to view
-    _pViewDelegate = new AluminumViewDelegate(_device.get());
-    _pView->setDelegate( _pViewDelegate );
+    // _pViewDelegate =  new AluminumViewDelegate(_device.get());
+    _viewDelegate = std::make_unique<AluminumViewDelegate>(_device.get());
+    _view->setDelegate( _pViewDelegate );
 
-    _pWindow->setContentView( _pView );
-    _pWindow->setTitle(NS::String::string("Aluminum - A Metal based physics engine.", NS::UTF8StringEncoding));
+    _window->setContentView( _view.get());
+    _window->setTitle(NS::String::string("Aluminum - A Metal based physics engine.", NS::UTF8StringEncoding));
 
-    _pWindow->makeKeyAndOrderFront(nullptr);
+    _window->makeKeyAndOrderFront(nullptr);
 
     NS::Application* pApp = reinterpret_cast<NS::Application*>(pNotification->object());
     pApp->activateIgnoringOtherApps(true);
