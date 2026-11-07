@@ -36,9 +36,8 @@ void AluminumAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotif
     _view->setColorPixelFormat(MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB);
 
     //* create and assign view delegate to view
-    // _pViewDelegate =  new AluminumViewDelegate(_device.get());
     _viewDelegate = std::make_unique<AluminumViewDelegate>(_device.get());
-    _view->setDelegate( _pViewDelegate );
+    _view->setDelegate( _viewDelegate.get() );
 
     _window->setContentView( _view.get());
     _window->setTitle(NS::String::string("Aluminum - A Metal based physics engine.", NS::UTF8StringEncoding));
