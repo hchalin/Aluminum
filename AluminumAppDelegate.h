@@ -20,7 +20,6 @@ public:
 private:
     NS::SharedPtr<NS::Window> _window;
     NS::SharedPtr<MTK::View> _view;
-    std::unique_ptr<AluminumViewDelegate> _viewDelegate;
-    AluminumViewDelegate* _pViewDelegate = nullptr;
     NS::SharedPtr<MTL::Device> _device;
+    std::unique_ptr<AluminumViewDelegate> _viewDelegate;
 };

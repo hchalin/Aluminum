@@ -14,8 +14,7 @@ public:
     void draw(MTK::View* pView);
 private:
     MTL::Device* _pDevice;
-    MTL::RenderPipelineState* _pPSO;
-
+    NS::SharedPtr<MTL::RenderPipelineState> _PSO;
     NS::SharedPtr<MTL::CommandQueue> _commandQueue;
 
 };

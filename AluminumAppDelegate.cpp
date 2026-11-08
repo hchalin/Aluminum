@@ -8,7 +8,6 @@
 
 
 AluminumAppDelegate::~AluminumAppDelegate() {
-    delete _pViewDelegate;
 }
 
 /**
@@ -32,7 +31,7 @@ void AluminumAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotif
 
     //* Create base Metal View, set clear color, and pixel format
     _view = NS::TransferPtr(MTK::View::alloc()->init(frame, _device.get()));
-    _view->setClearColor(MTL::ClearColor::Make(0.0, 1.0, 0.0, 1.0));
+    _view->setClearColor(MTL::ClearColor::Make(0.0, 0.5, 0.5, 1.0));
     _view->setColorPixelFormat(MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB);
 
     //* create and assign view delegate to view
