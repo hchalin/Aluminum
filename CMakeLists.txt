@@ -20,12 +20,20 @@ add_executable(Aluminum
         Renderer.h
 )
 
+# Pre compile shaders
+# Process the Shaders directory
+add_subdirectory(Shaders)
+
+# Ensure Metal shaders are built with Aluminum
+add_dependencies(Aluminum AluminumShaders)
+
+# Provide compiled shader library path to C++
+target_compile_definitions(Aluminum PRIVATE
+        ALUMINUM_METALLIB_PATH=\"${ALUMINUM_METALLIB}\"
+)
+
 target_include_directories(Aluminum PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Backend/metal-cpp
-)
-# Provide the library's path to C++
-target_compile_definitions(Aluminum PRIVATE
-        ALUMINUM_METALLIB_PATH=\"${METAL_LIBRARY}\"
 )
 
 find_package(Chrono REQUIRED CONFIG)

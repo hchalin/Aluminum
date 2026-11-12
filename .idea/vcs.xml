@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Backend/metal-cpp" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/metal-analyzer" vcs="Git" />
   </component>
 </project>

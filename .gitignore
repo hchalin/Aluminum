@@ -1,0 +1,9 @@
+# CMake build output
+/build/
+/cmake-build-*/
+
+# macOS and Xcode user-specific files
+.DS_Store
+**/xcuserdata/
+*.xcuserstate
+**/DerivedData/

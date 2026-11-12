@@ -1,0 +1,3 @@
+[submodule "metal-analyzer"]
+	path = metal-analyzer
+	url = https://github.com/computer-graphics-tools/metal-analyzer.git
