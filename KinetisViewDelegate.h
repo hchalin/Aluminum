@@ -13,10 +13,10 @@
 
 class Renderer;
 
-class AluminumViewDelegate : public MTK::ViewDelegate {
+class KinetisViewDelegate : public MTK::ViewDelegate {
 public:
-    AluminumViewDelegate(MTL::Device* pDevice);
-    virtual ~AluminumViewDelegate() override;
+    KinetisViewDelegate(MTL::Device* pDevice);
+    virtual ~KinetisViewDelegate() override;
     virtual void drawableSizeWillChange(class MTK::View *pView, CGSize size) override;
     virtual void drawInMTKView(class MTK::View *pView) override;
 private:

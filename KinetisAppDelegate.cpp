@@ -2,18 +2,18 @@
 // Created by Hayden Chalin on 11/3/26.
 //
 
-#include "AluminumAppDelegate.h"
-#include "AluminumViewDelegate.h"
+#include "KinetisAppDelegate.h"
+#include "KinetisViewDelegate.h"
 
 
 
-AluminumAppDelegate::~AluminumAppDelegate() {
+KinetisAppDelegate::~KinetisAppDelegate() {
 }
 
 /**
  *      This function gets called automatically, and acts as the applicaitons constructor
  */
-void AluminumAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotification) {
+void KinetisAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotification) {
 
     //* Define the frame size
     CGRect frame = {.origin = {100.0, 100.0}, .size = {1024, 1024}};
@@ -35,11 +35,11 @@ void AluminumAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotif
     _view->setColorPixelFormat(MTL::PixelFormat::PixelFormatBGRA8Unorm_sRGB);
 
     //* create and assign view delegate to view
-    _viewDelegate = std::make_unique<AluminumViewDelegate>(_device.get());
+    _viewDelegate = std::make_unique<KinetisViewDelegate>(_device.get());
     _view->setDelegate( _viewDelegate.get() );
 
     _window->setContentView( _view.get());
-    _window->setTitle(NS::String::string("Aluminum - A Metal based physics engine.", NS::UTF8StringEncoding));
+    _window->setTitle(NS::String::string("Kinetis - A Metal based physics engine.", NS::UTF8StringEncoding));
 
     _window->makeKeyAndOrderFront(nullptr);
 
@@ -48,13 +48,11 @@ void AluminumAppDelegate::applicationDidFinishLaunching(NS::Notification *pNotif
 
 }
 
-void AluminumAppDelegate::applicationWillFinishLaunching(NS::Notification *pNotification) {
-    // NS::Menu* pMenu = createMenuBar();
+void KinetisAppDelegate::applicationWillFinishLaunching(NS::Notification *pNotification) {
     NS::Application* pApp = reinterpret_cast< NS::Application* >( pNotification->object() );
-    // pApp->setMainMenu( pMenu );
     pApp->setActivationPolicy( NS::ActivationPolicy::ActivationPolicyRegular );
 }
-bool AluminumAppDelegate::applicationShouldTerminateAfterLastWindowClosed(NS::Application *pSender) {
+bool KinetisAppDelegate::applicationShouldTerminateAfterLastWindowClosed(NS::Application *pSender) {
     return true;
 }
 

@@ -12,7 +12,7 @@ set(SHADER_AIR
 
 # Final metal library
 set(SHADER_LIBRARY
-"${CMAKE_CURRENT_BINARY_DIR}/Aluminum.metallib")
+"${CMAKE_CURRENT_BINARY_DIR}/Kinetis.metallib")
 
 add_custom_command(
         OUTPUT "${SHADER_AIR}"
@@ -36,11 +36,11 @@ add_custom_command(
         VERBATIM
 )
 
-add_custom_target(AluminumShaders
+add_custom_target(KinetisShaders
         DEPENDS "${SHADER_LIBRARY}"
 )
 
-set(ALUMINUM_METALLIB
+set(KINETIS_METALLIB
         "${SHADER_LIBRARY}"
         PARENT_SCOPE
 )

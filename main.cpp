@@ -1,8 +1,8 @@
-#include "AluminumAppDelegate.h"
+#include "KinetisAppDelegate.h"
 
 int main() {
     NS::AutoreleasePool* pool = NS::AutoreleasePool::alloc()->init();
-    AluminumAppDelegate appDelegate;
+    KinetisAppDelegate appDelegate;
     NS::Application* app = NS::Application::sharedApplication();
     app->setDelegate(&appDelegate);
     app->run();
